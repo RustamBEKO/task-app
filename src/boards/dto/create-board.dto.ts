@@ -1,17 +1,9 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsEnum, IsInt, Min, Max } from 'class-validator';
 
 export class CreateBoardDto {
-
-    @IsInt()
-    id: number;
-    
+    @ApiProperty({ example: 'Доска задач', description: 'Название доски' })
     @IsString()
     title: string;
-
-    @IsInt()
-    @Min(1888) // The year the first movie was made
-    @Max(new Date().getFullYear()) // Current year
-    createdAt: Date;
-
 
 }
