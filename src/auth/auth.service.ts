@@ -92,7 +92,7 @@ export class AuthService {
       });
 
       if (!user) {
-        throw new NotFoundException('Пользователь не найден');
+        throw new NotFoundException('Невалидный body login');
       }
 
       return this.auth(res, user.id);
@@ -104,8 +104,19 @@ export class AuthService {
     return { message: 'Вы успешно вышли из аккаунта' };
   }
 
+   async validateUser(id: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      select: { id: true },
+    });
+    if (!user) {
+      throw new NotFoundException('Пользователь не найден');
+    }
+    return user;
+  }
 
-    private auth(res: Response, id: number) {
+
+    private auth(res: Response, id: string) {
     const { accessToken, refreshToken } = this.generateTokens(id);
     this.setCookie(
       res,
@@ -114,7 +125,7 @@ export class AuthService {
     );
     return { accessToken };
   }
-  private generateTokens(id: number) {
+  private generateTokens(id: string) {
     const payload = { id };
 
     const accessToken = this.jwtService.sign(payload, {

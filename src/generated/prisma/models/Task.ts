@@ -29,13 +29,11 @@ export type AggregateTask = {
 export type TaskAvgAggregateOutputType = {
   id: number | null
   boardId: number | null
-  userId: number | null
 }
 
 export type TaskSumAggregateOutputType = {
   id: number | null
   boardId: number | null
-  userId: number | null
 }
 
 export type TaskMinAggregateOutputType = {
@@ -44,7 +42,7 @@ export type TaskMinAggregateOutputType = {
   description: string | null
   status: $Enums.Status | null
   boardId: number | null
-  userId: number | null
+  userId: string | null
   createdAt: Date | null
 }
 
@@ -54,7 +52,7 @@ export type TaskMaxAggregateOutputType = {
   description: string | null
   status: $Enums.Status | null
   boardId: number | null
-  userId: number | null
+  userId: string | null
   createdAt: Date | null
 }
 
@@ -73,13 +71,11 @@ export type TaskCountAggregateOutputType = {
 export type TaskAvgAggregateInputType = {
   id?: true
   boardId?: true
-  userId?: true
 }
 
 export type TaskSumAggregateInputType = {
   id?: true
   boardId?: true
-  userId?: true
 }
 
 export type TaskMinAggregateInputType = {
@@ -205,7 +201,7 @@ export type TaskGroupByOutputType = {
   description: string | null
   status: $Enums.Status
   boardId: number
-  userId: number
+  userId: string
   createdAt: Date
   _count: TaskCountAggregateOutputType | null
   _avg: TaskAvgAggregateOutputType | null
@@ -238,7 +234,7 @@ export type TaskWhereInput = {
   description?: Prisma.StringNullableFilter<"Task"> | string | null
   status?: Prisma.EnumStatusFilter<"Task"> | $Enums.Status
   boardId?: Prisma.IntFilter<"Task"> | number
-  userId?: Prisma.IntFilter<"Task"> | number
+  userId?: Prisma.StringFilter<"Task"> | string
   createdAt?: Prisma.DateTimeFilter<"Task"> | Date | string
   board?: Prisma.XOR<Prisma.BoardScalarRelationFilter, Prisma.BoardWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -265,7 +261,7 @@ export type TaskWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Task"> | string | null
   status?: Prisma.EnumStatusFilter<"Task"> | $Enums.Status
   boardId?: Prisma.IntFilter<"Task"> | number
-  userId?: Prisma.IntFilter<"Task"> | number
+  userId?: Prisma.StringFilter<"Task"> | string
   createdAt?: Prisma.DateTimeFilter<"Task"> | Date | string
   board?: Prisma.XOR<Prisma.BoardScalarRelationFilter, Prisma.BoardWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -295,7 +291,7 @@ export type TaskScalarWhereWithAggregatesInput = {
   description?: Prisma.StringNullableWithAggregatesFilter<"Task"> | string | null
   status?: Prisma.EnumStatusWithAggregatesFilter<"Task"> | $Enums.Status
   boardId?: Prisma.IntWithAggregatesFilter<"Task"> | number
-  userId?: Prisma.IntWithAggregatesFilter<"Task"> | number
+  userId?: Prisma.StringWithAggregatesFilter<"Task"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Task"> | Date | string
 }
 
@@ -314,7 +310,7 @@ export type TaskUncheckedCreateInput = {
   description?: string | null
   status?: $Enums.Status
   boardId: number
-  userId: number
+  userId: string
   createdAt?: Date | string
 }
 
@@ -333,7 +329,7 @@ export type TaskUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   boardId?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -343,7 +339,7 @@ export type TaskCreateManyInput = {
   description?: string | null
   status?: $Enums.Status
   boardId: number
-  userId: number
+  userId: string
   createdAt?: Date | string
 }
 
@@ -360,7 +356,7 @@ export type TaskUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   boardId?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -387,7 +383,6 @@ export type TaskCountOrderByAggregateInput = {
 export type TaskAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   boardId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
 }
 
 export type TaskMaxOrderByAggregateInput = {
@@ -413,7 +408,6 @@ export type TaskMinOrderByAggregateInput = {
 export type TaskSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   boardId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
 }
 
 export type TaskCreateNestedManyWithoutUserInput = {
@@ -460,6 +454,14 @@ export type TaskUncheckedUpdateManyWithoutUserNestedInput = {
 
 export type EnumStatusFieldUpdateOperationsInput = {
   set?: $Enums.Status
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type TaskCreateNestedManyWithoutBoardInput = {
@@ -556,7 +558,7 @@ export type TaskScalarWhereInput = {
   description?: Prisma.StringNullableFilter<"Task"> | string | null
   status?: Prisma.EnumStatusFilter<"Task"> | $Enums.Status
   boardId?: Prisma.IntFilter<"Task"> | number
-  userId?: Prisma.IntFilter<"Task"> | number
+  userId?: Prisma.StringFilter<"Task"> | string
   createdAt?: Prisma.DateTimeFilter<"Task"> | Date | string
 }
 
@@ -573,7 +575,7 @@ export type TaskUncheckedCreateWithoutBoardInput = {
   title: string
   description?: string | null
   status?: $Enums.Status
-  userId: number
+  userId: string
   createdAt?: Date | string
 }
 
@@ -643,7 +645,7 @@ export type TaskCreateManyBoardInput = {
   title: string
   description?: string | null
   status?: $Enums.Status
-  userId: number
+  userId: string
   createdAt?: Date | string
 }
 
@@ -660,7 +662,7 @@ export type TaskUncheckedUpdateWithoutBoardInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -669,7 +671,7 @@ export type TaskUncheckedUpdateManyWithoutBoardInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -747,7 +749,7 @@ export type $TaskPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     description: string | null
     status: $Enums.Status
     boardId: number
-    userId: number
+    userId: string
     createdAt: Date
   }, ExtArgs["result"]["task"]>
   composites: {}
@@ -1179,7 +1181,7 @@ export interface TaskFieldRefs {
   readonly description: Prisma.FieldRef<"Task", 'String'>
   readonly status: Prisma.FieldRef<"Task", 'Status'>
   readonly boardId: Prisma.FieldRef<"Task", 'Int'>
-  readonly userId: Prisma.FieldRef<"Task", 'Int'>
+  readonly userId: Prisma.FieldRef<"Task", 'String'>
   readonly createdAt: Prisma.FieldRef<"Task", 'DateTime'>
 }
     

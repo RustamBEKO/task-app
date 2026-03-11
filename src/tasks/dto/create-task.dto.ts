@@ -19,7 +19,7 @@ export class CreateTaskDto {
 
     @ApiProperty({ example: 1, description: 'ID пользователя' })
     @IsInt()
-    userId: number;
+    userId: string;
 
     @ApiProperty({ example: 1, description: 'ID доски' })
     @IsInt()
