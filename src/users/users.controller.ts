@@ -28,7 +28,7 @@ export class UsersController {
   @ApiResponse({ status: 200, description: 'Пользователь успешно получен.' })
   @ApiResponse({ status: 404, description: 'Пользователь с указанным ID не найден.' })
   @Get(':id')
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
 
@@ -36,7 +36,7 @@ export class UsersController {
   @ApiResponse({ status: 200, description: 'Пользователь успешно удален.' })
   @ApiResponse({ status: 404, description: 'Пользователь с указанным ID не найден.' })
   @Delete(':id')
-  remove(@Param('id') id: number) {
+  remove(@Param('id') id: string) {
     return this.usersService.remove(id);
   }
 }

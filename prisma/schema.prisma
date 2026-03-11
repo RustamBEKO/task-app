@@ -21,7 +21,7 @@ enum Status {
 }
 
 model User {
-  id        Int   @id @default(autoincrement())
+  id        String   @id @default(uuid())
   name      String?
   email     String   @unique
   password  String
@@ -37,7 +37,7 @@ model Task {
   status      Status @default(TODO)
   boardId     Int
   board       Board    @relation(fields: [boardId], references: [id])
-  userId      Int
+  userId      String
   user        User     @relation(fields: [userId], references: [id])
   createdAt   DateTime @default(now())
 }

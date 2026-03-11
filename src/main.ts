@@ -4,10 +4,13 @@ import { ValidationPipe } from '@nestjs/common/pipes/validation.pipe';
 import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger';
 import { Task } from './tasks/entities/task.entity';
+import cookieParser from 'cookie-parser';
+import { setupSwagger } from './auth/utils/swagger.util';
 
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.use(cookieParser());
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -16,16 +19,7 @@ async function bootstrap() {
     }),
   );
 
-  const config = new DocumentBuilder()
-    .setTitle('Task App API')
-    .setDescription('API для управления задачами, досками и пользователями')
-    .setVersion('1.0')
-    .addTag('tasks','Эндпоинты для управления задачами')
-    .addTag('boards','Эндпоинты для управления досками')
-    .addTag('users','Эндпоинты для управления пользователями')
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+ setupSwagger(app);
 
   await app.listen(3000);
 }
