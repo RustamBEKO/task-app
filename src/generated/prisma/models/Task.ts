@@ -462,10 +462,6 @@ export type EnumStatusFieldUpdateOperationsInput = {
   set?: $Enums.Status
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
 export type TaskCreateNestedManyWithoutBoardInput = {
   create?: Prisma.XOR<Prisma.TaskCreateWithoutBoardInput, Prisma.TaskUncheckedCreateWithoutBoardInput> | Prisma.TaskCreateWithoutBoardInput[] | Prisma.TaskUncheckedCreateWithoutBoardInput[]
   connectOrCreate?: Prisma.TaskCreateOrConnectWithoutBoardInput | Prisma.TaskCreateOrConnectWithoutBoardInput[]
