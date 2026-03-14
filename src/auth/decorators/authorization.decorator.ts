@@ -3,5 +3,6 @@ import { JwtGuard } from "../guards/auth.guard";
 
 export function Authorization() {
   return applyDecorators(
-    UseGuards(JwtGuard));
+    UseGuards(JwtGuard)
+  );
 }

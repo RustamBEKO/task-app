@@ -5,8 +5,7 @@ import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger';
 import { Task } from './tasks/entities/task.entity';
 import cookieParser from 'cookie-parser';
-import { setupSwagger } from './auth/utils/swagger.util';
-
+import { setupSwagger } from './utils/swagger.util';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,7 +18,7 @@ async function bootstrap() {
     }),
   );
 
- setupSwagger(app);
+  setupSwagger(app);
 
   await app.listen(3000);
 }

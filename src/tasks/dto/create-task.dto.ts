@@ -17,10 +17,6 @@ export class CreateTaskDto {
     @IsEnum(Status)
     status: Status;
 
-    @ApiProperty({ example: 1, description: 'ID пользователя' })
-    @IsInt()
-    userId: string;
-
     @ApiProperty({ example: 1, description: 'ID доски' })
     @IsInt()
     boardId: number;
